@@ -7,5 +7,9 @@ class AppIndex(models.Model):
     def __str__(self):
         return self.app_title
 
-class AppDetails(models.Model):
-    app_detail = models.ForeignKey(AppIndex, on_delete=models.CASCADE)
+class AppDetail(models.Model):
+    app_detail = models.ForeignKey(AppIndex, on_delete=models.CASCADE, null = True)
+    app_desc = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return self.app_desc
