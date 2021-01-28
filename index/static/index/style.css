@@ -1,0 +1,17 @@
+body{
+    height: 100%;
+    background: white url('img/background.jpeg');
+  
+   
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+.navbar-brand{
+  font-family: 'Oswald';
+  font-size: 30px;
+}
+  
+  
