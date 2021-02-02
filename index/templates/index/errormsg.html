@@ -1,5 +1,6 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'index/style.css' %}" />
+{% extends 'index/base.html' %}
+
+{% block body %}
 
 <img src="{{ app.app_logo_logo }}"><br>
 
@@ -8,5 +9,5 @@
     {% for app in app.appdetail_set.all %}
     {{ app.app_desc }}
     {% endfor %}
-
+{% endblock %}
 
