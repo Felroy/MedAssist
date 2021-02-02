@@ -13,3 +13,4 @@ def app_choice(request, app_id):
     except AppIndex.DoesNotExist:
         raise Http404("Page does not exist, please go back to the site index")
     return render(request, 'index/errormsg.html', {'app':app})
+
