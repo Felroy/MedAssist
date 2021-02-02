@@ -1,10 +1,25 @@
 {% extends 'index/base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'index/style.css' %}" />
 
 {% block body %}
-    <ul>
-        {% for app in app_list %}
-        <img src="{{ app.app_logo_logo }}">
-        <li><a href="{% url 'index:app_choice' app.id %}">{{ app.app_title }}</a></li>
-        {%  endfor %}
-    </ul>
+<div class="index-container container-fluid">
+    <div class="row justify-content-center align-items-center">
+   
+    {% for app in app_list %}
+    
+    <div class="col-sm-8 col-lg-2">
+        <div class="thumbnail">
+            <a href="{% url 'index:app_choice' app.id %}">                
+                <img src="{{ app.app_logo_logo }}" class="img-responsive"/>
+                <h3>{{ app.app_title }}</h3>
+            </a>   
+                            
+    
+        </div>
+    </div>
+    {%  endfor %}
+    
+    </div>
+</div>
 {% endblock %}
