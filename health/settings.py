@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index.apps.IndexConfig',
     'symp',
+    'casetracker',
+    'facility',
 ]
 
 MIDDLEWARE = [

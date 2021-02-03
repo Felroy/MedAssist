@@ -27,17 +27,17 @@
             <div class="collapse navbar-collapse" id="topNavBar">
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="{% url 'index:index' %}">
+                        <a href="{% url 'symp:sympcheck' %}">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Symptom Checker
                         </a>
                     </li>
                     <li class="">
-                        <a href="#">
+                        <a href="{% url 'casetracker:localcasetrackername' %}">
                             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp; Local Case Tracker
                         </a>
                     </li>
                     <li class="">
-                        <a href="#">
+                        <a href="{% url 'facility:facilitylocator' %}">
                             <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp; Nearest Medical Facility
                         </a>
                     </li>            
