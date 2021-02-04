@@ -1,6 +1,8 @@
 from django.http import Http404
 from django.shortcuts import render, redirect, reverse
 from .models import AppIndex
+from django.http import HttpResponseRedirect
+
 
 # Create your views here.
 def index(request):
@@ -12,11 +14,11 @@ def app_choice(request, app_id):
         app = AppIndex.objects.get(pk=app_id)   
         
         if app_id == 1: 
-            return render(request, 'symp/sympcheck.html', {'app':app})
+            return HttpResponseRedirect('/symp/')
         elif app_id == 2:
-            return render(request, 'casetracker/casetracker.html', {'app':app})
+            return HttpResponseRedirect('/casetracker/')
         elif app_id == 3: 
-            return render(request, 'facility/facility.html', {'app':app})
+            return HttpResponseRedirect('/facility/')
     except AppIndex.DoesNotExist:
         raise Http404("Page does not exist, please go back to the site index")
     return render(request, 'index/errormsg.html', {'app':app})

@@ -1,14 +1,15 @@
-body{
-    height: 100%;
-    background: white url('img/background.jpeg');
-  
-   
+html{
+    background: url('img/background.jpeg');   
   
     /* Center and scale the image nicely */
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;  
   }
+
 .navbar-brand{
   font-family: 'Oswald';
   font-size: 30px;
