@@ -10,6 +10,7 @@ import requests
 def facilitylocator(request):    
     return render(request, 'facility/facility.html')
 
+
 #def test(request):
     #response=requests.post(place_details).json()
     #return render(request, 'facility/facility.html', {'response':response})

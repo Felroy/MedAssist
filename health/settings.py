@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+GDAL_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\gdal302.dll'
+GEOS_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\geos_c.dll'
+POSTGIS_VERSION = (3, 1, 1)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'index.apps.IndexConfig',
     'symp',
     'casetracker',
@@ -82,9 +87,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    
+    'geospatial': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'geospatial',
+        'USER': 'postgres',
+        'PASSWORD': 'felroy',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
-   
 }
+
+DATABASE_ROUTERS = ['facility.routers.dbRouter']
+
 
 
 # Password validation
