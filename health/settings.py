@@ -12,10 +12,20 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-
+  
+if os.name == 'nt':
+    import platform
+    OSGEO4W = r"C:\OSGeo4W"
+    if '64' in platform.architecture()[0]:
+        OSGEO4W += "64"
+    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+    os.environ['OSGEO4W_ROOT'] = OSGEO4W
+    os.environ['GDAL_DATA'] = r'C:\Python\Lib\site-packages\osgeo\data\gdal'
+    os.environ['PROJ_LIB'] = r'C:\Python\Lib\site-packages\osgeo\data\proj'
+    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
+POSTGIS_VERSION = (3, 1, 1)
 GDAL_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\gdal302.dll'
 GEOS_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\geos_c.dll'
-POSTGIS_VERSION = (3, 1, 1)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +56,8 @@ INSTALLED_APPS = [
     'index.apps.IndexConfig',
     'symp',
     'casetracker',
-    'facility',
+    'facility', 
+      
 ]
 
 MIDDLEWARE = [
@@ -95,7 +106,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'felroy',
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '5432',
     }
 }
 

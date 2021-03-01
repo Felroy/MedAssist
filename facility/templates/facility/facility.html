@@ -1,10 +1,24 @@
 {% extends 'index/base.html' %} 
 {% load static %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'facility/style.css' %}" />
+-->
 
 {% block body %}
-<h5>ooga booga</h5>
+<h3> 
+ </h3>
+
+
+<!-- {% for item in testi %}
+{{ item.name }}
+{% endfor %} -->
+
 <div class="panel-body">
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <h3>Facility locator</h3>
+    
+    {{ map|safe }}  
+   
+
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data"><br>
         {% csrf_token %}
         {% include 'facility/locator.html' %}
         <div class="form-group">
@@ -14,6 +28,4 @@
         </div>
     </form>
 </div>
-<strong></strong>
-
 {% endblock %}
