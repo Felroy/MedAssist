@@ -4,8 +4,6 @@
 -->
 
 {% block body %}
-<h3> 
- </h3>
 
 
 <!-- {% for item in testi %}
@@ -13,7 +11,7 @@
 {% endfor %} -->
 
 <div class="panel-body">
-    <h3>Facility locator</h3>
+    <h3>Facility locator</h3> 
     
     {{ map|safe }}  
    
@@ -27,5 +25,15 @@
             </div>
         </div>
     </form>
+    
+    sdgfsfdgsg
+    {% if sort %}
+    {% for object1 in test %}
+    <li>
+    {{ object1.name }}
+    </li>
+    {% endfor %}
+    {% endif %}
+
 </div>
 {% endblock %}
