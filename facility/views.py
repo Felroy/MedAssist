@@ -27,20 +27,21 @@ def facilitylocator(request):
       popup=item.name,
       icon=folium.Icon()
     ).add_to(map)      
-
-  
+    
+  point = Point(location1.latitude, location1.longitude)
+  sort = Clinic.objects.filter(location__distance_lt=(point, Distance(km=2)))
   map=map._repr_html_()
 
 
   return render(request, 'facility/facility.html', {'map': map})   
 
-def nearestclinic(request):
+#def nearestclinic(request):
   loc = request.POST.get('your_address')
   geolocator = Nominatim(user_agent='felroy01998@gmail.com')
   location1 = geolocator.geocode(loc)
-  point = Point(location1.latitude, location1.longitude)
   
-  sort = Clinic.objects.filter(location__distance_lt=(point, Distance(km=2)))
+  
+  
 
   return render(request, 'facility/facility.html', {'sort': sort})
 #def test(request): 

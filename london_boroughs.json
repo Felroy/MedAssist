@@ -43545,7 +43545,7 @@
       "type": "Feature",
       "properties": {
         "id": 29,
-        "name": "Hackney",
+        "name": "Hackney and City of London",
         "code": "E09000012",
         "area_hectares": 1904.902,
         "inner_statistical": true
@@ -48831,7 +48831,7 @@
       "type": "Feature",
       "properties": {
         "id": 33,
-        "name": "City of London",
+        "name": "Hackney and City of London",
         "code": "E09000001",
         "area_hectares": 314.942,
         "inner_statistical": true
