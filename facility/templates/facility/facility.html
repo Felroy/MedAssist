@@ -1,7 +1,7 @@
 {% extends 'index/base.html' %} 
 {% load static %}
-<!--<link rel="stylesheet" type="text/css" href="{% static 'facility/style.css' %}" />
--->
+<link rel="stylesheet" type="text/css" href="{% static 'facility/style.css' %}" />
+
 
 {% block body %}
 
@@ -13,9 +13,8 @@
 <div class="panel-body">
     <h3>Facility locator</h3> 
     
-    {{ map|safe }}  
-   
-
+    {{ map|safe }} 
+    
     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data"><br>
         {% csrf_token %}
         {% include 'facility/locator.html' %}
@@ -25,15 +24,17 @@
             </div>
         </div>
     </form>
-    
-    sdgfsfdgsg
+    <h3>Nearby Clinics:</h3>
     {% if sort %}
-    {% for object1 in test %}
-    <li>
-    {{ object1.name }}
-    </li>
+    {% for object1 in sort %}
+    <div class="nearbyclinics">
+        <h4><li>
+            {{ object1.name }}
+        </li></h4>
+    </div>
     {% endfor %}
     {% endif %}
+
 
 </div>
 {% endblock %}

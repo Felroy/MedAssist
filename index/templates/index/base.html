@@ -61,9 +61,20 @@
                 </ul>
             </div>
         </nav>
+        
+        
 
         {% block body %}
-        {% endblock %}
+       
+
+        {% block scripts %}
+        {% endblock scripts %}
+
+        {% block content %}
+        {% endblock content %} 
+
+        {% endblock body %}
+
 
     </body>
 

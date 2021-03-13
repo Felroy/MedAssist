@@ -25,6 +25,11 @@ html, body{
   height: 500px;
   overflow: auto;
 }
-
+.nearbyclinics {
+  max-width: 500px;
+  border: 2px outset black;
+  background-color: lightslategray;
+  text-align: center;
+}
 
   

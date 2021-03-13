@@ -7,6 +7,9 @@ import pandas as pd
 import geopandas as gpd
 import fiona
 from shapely import speedups
+from .models import Borough
+from django.http import JsonResponse
+
 
 speedups.disable()
 
@@ -16,14 +19,14 @@ def localcasetracker(request):
     boroughs = os.path.join(os.path.dirname(os.path.dirname(__file__)),'london_boroughs.json')
     cases =  os.path.join(os.path.dirname(os.path.dirname(__file__)),'nhse_weekly_vaccines_london_ltla.csv')
     boroughs_cases = pd.read_csv(cases)
-    #london = 'D:\health\LondonBoundary\ESRI\London_Borough_Excluding_MHW.shp'
     mergeDF = gpd.read_file(boroughs)
-    # ERROR AREA HERE # mergeDF=mergeDF[['name', 'geometry']]
+
 
     #geoj=pd.read_csv('geojson.csv')
     finalmerge=mergeDF.merge(boroughs_cases,on="name")
 
-    map = folium.Map(location=[51.528308,-0.3817686], zoom_start=12) 
+    mapfigure= folium.Figure(width=1200, height=800)  
+    map = folium.Map(location=[51.528308,-0.3817686], zoom_start=12).add_to(mapfigure)
     vaccines = folium.Choropleth(
         geo_data=boroughs,
         name='Vaccines',
@@ -36,39 +39,17 @@ def localcasetracker(request):
         legend_name='Vaccines registered as of 21-02-2021',
         show=True ,      
     ).add_to(map)
-    
-    #style_function = lambda x: {'fillColor': '#ffffff', 
-     #                       'color':'#000000', 
-     #                       'fillOpacity': 0.1, 
-     #                       'weight': 0.1}
-    #highlight_function = lambda x: {'fillColor': '#000000', 
-     #                           'color':'#000000', 
-      #                          'fillOpacity': 0.50, 
-      #                          'weight': 0.1}
-    #NIL = folium.GeoJson(
-    #finalmerge,
-    #finalmerge.head(3),
-    #style_function=style_function, 
-    #control=False,
-    #highlight_function=highlight_function, 
-    #tooltip=folium.features.GeoJsonTooltip(
-     #   fields=['name'],
-     #   aliases=['name'],
-     #   style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;") 
-   # )
-   # )
-    #map.add_child(NIL)
-   
+       
     pop = folium.Choropleth(
         geo_data=boroughs,
-        name='Population vaccinated',
+        name='Percentage of population vaccinated',
         data=boroughs_cases,
-        columns=['name', 'population'],
+        columns=['name', 'percentstr'],
         key_on='feature.properties.name',
         fill_color='YlOrRd',
         fill_opacity=0.4,
         line_opacity=0.5,
-        legend_name='Population registered as of 21-02-2021',
+        legend_name='Percentage of population vaccinated as of 21-02-2021',
         show= False,       
     ).add_to(map)
     style_function = lambda x: {'fillColor': '#ffffff', 
@@ -80,14 +61,15 @@ def localcasetracker(request):
                                 'fillOpacity': 0.50, 
                                 'weight': 0.1}
 
+    
     borough_properties = folium.GeoJson(
             finalmerge,
             style_function=style_function,
             highlight_function=highlight_function,
             control=False,
             tooltip=folium.GeoJsonTooltip(
-                fields=['name'],
-                aliases=['Borough'],
+                fields=['name', 'vaccines', 'percentstr'],
+                aliases=['Borough:', 'Vaccines given:', 'Percentage of population vaccinated:'],
                 style=("background-color: white; color: #333333;font-family: arial; font-size: 12px; padding: 10px;") 
             )
         )
@@ -98,5 +80,18 @@ def localcasetracker(request):
     map=map._repr_html_()
     return render(request, 'casetracker/casetracker.html', {'casemap' : map})
 
+def vaccinechart(request):
+    labels=[]
+    data=[]
 
+    queryvalid = Borough.objects.values('borough_name', 'vaccines_given') 
+    for item in queryvalid:
+        labels.append(item['borough_name']) 
+        data.append(item['vaccines_given'])
+
+    return JsonResponse(data={
+        'labels':labels,
+        'data': data,
+    })
     
+   
