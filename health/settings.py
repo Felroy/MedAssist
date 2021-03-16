@@ -24,7 +24,7 @@ if os.name == 'nt':
     os.environ['PROJ_LIB'] = r'C:\Python\Lib\site-packages\osgeo\data\proj'
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 POSTGIS_VERSION = (3, 1, 1)
-GDAL_LIBRARY_PATH = os.environ.get('C:\Python\Lib\site-packages\osgeo\gdal302.dll')
+GDAL_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\gdal302.dll'
 GEOS_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\geos_c.dll'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
