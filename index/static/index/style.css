@@ -32,4 +32,8 @@ html, body{
   text-align: center;
 }
 
+.canvas#myChart {
+  background-color: rgb(218, 218, 218);
+}
+
   
