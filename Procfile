@@ -1,1 +1,1 @@
-web gunicorn health:application
+web: gunicorn health:application
