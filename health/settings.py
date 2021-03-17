@@ -153,8 +153,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import dj_database_url
-geodbtest = dj_database_url.config('HEROKU_POSTGRESQL_GRAY_URL')
-DATABASES['geospatial'].update(geodbtest)
+#geodbtest = dj_database_url.config('HEROKU_POSTGRESQL_GRAY_URL')
+#DATABASES['geospatial'].update(geodbtest)
 #DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 django_heroku.settings(locals())
