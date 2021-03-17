@@ -154,7 +154,7 @@ STATIC_URL = '/static/'
 
 import dj_database_url
 #defaultDB =  dj_database_url.config()
-#DATABASES['default'].update(defaultDB)
+
 
 
 DATABASES['geospatial'] = dj_database_url.config()
