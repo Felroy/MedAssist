@@ -101,7 +101,7 @@ DATABASES = {
     },
     
     'geospatial': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd3qst7v88t8ip3',
         'USER': 'zvmidtgaeqvbpm',
         'PASSWORD': '56e0609a3b65fbc76bc70752548b8ac4bd9ea155e80e4c6947627f0ace293902',
