@@ -156,5 +156,7 @@ import dj_database_url
 
 test1 = dj_database_url.config(default=os.environ['DATABASE_URL'])
 DATABASES['default'].update(test1)
-#DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+
+test2 = dj_database_url.config(default=os.environ['SECONDARY_DATABASE_URL'])
+DATABASES['geospatial'].update(test2)
 django_heroku.settings(locals())
