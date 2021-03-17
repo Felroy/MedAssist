@@ -96,20 +96,16 @@ WSGI_APPLICATION = 'health.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3qst7v88t8ip3',
-        'HOST': 'ec2-50-19-176-236.compute-1.amazonaws.com:5432',
-        'PORT': 5432,
-        'USER': 'zvmidtgaeqvbpm',
-        'PASSWORD': '56e0609a3b65fbc76bc70752548b8ac4bd9ea155e80e4c6947627f0ace293902',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     },
     
     'geospatial': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'geospatial',
-        'USER': 'postgres',
-        'PASSWORD': 'felroy',
-        'HOST': 'localhost',
+        'ENGINE': 'django.contrib.gis.db.backends.postgresql',
+        'NAME': 'd3qst7v88t8ip3',
+        'USER': 'zvmidtgaeqvbpm',
+        'PASSWORD': '56e0609a3b65fbc76bc70752548b8ac4bd9ea155e80e4c6947627f0ace293902',
+        'HOST': 'ec2-50-19-176-236.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -155,6 +151,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#import dj_database_url
+import dj_database_url
+
+#test1 = dj_database_url.config(['DATABASE_URL'])
+#DATABASES['default'].update(test1)
 
 django_heroku.settings(locals())
