@@ -154,9 +154,7 @@ STATIC_URL = '/static/'
 
 import dj_database_url
 
-test1 = dj_database_url.config(default=os.environ['DATABASE_URL'])
+test1 = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(test1)
 
-test2 = dj_database_url.config(default=os.environ['SECONDARY_DATABASE_URL'])
-DATABASES['geospatial'].update(test2)
 django_heroku.settings(locals())
