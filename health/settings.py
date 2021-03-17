@@ -151,11 +151,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-django_heroku.settings(locals())
+
 import dj_database_url
-defaultDB =  dj_database_url.config()
-DATABASES['default'].update(defaultDB)
+#defaultDB =  dj_database_url.config()
+#DATABASES['default'].update(defaultDB)
 
 
-#DATABASES['geospatial'] = dj_database_url.config()
-#DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+DATABASES['geospatial'] = dj_database_url.config()
+DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+django_heroku.settings(locals())
