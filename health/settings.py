@@ -155,9 +155,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-import dj_database_url
-
-test1 = dj_database_url.config(['DATABASE_URL'])
-DATABASES['default'].update(test1)
+#import dj_database_url
 
 django_heroku.settings(locals())
