@@ -105,7 +105,7 @@ DATABASES = {
         'NAME': 'geospatial',
         'USER': 'postgres',
         'PASSWORD': 'felroy',
-        'HOST': 'localhost',
+        'HOST': 'PostgreSQL 13',
         'PORT': '5432',
     }
 }
