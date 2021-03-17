@@ -98,16 +98,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    
-     'geospatial': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'geospatial',
-        'USER': 'postgres',
-        'PASSWORD': 'felroy',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    },   
+     
 }
 
 DATABASE_ROUTERS = ['facility.routers.dbRouter']
