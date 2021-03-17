@@ -102,13 +102,14 @@ DATABASES = {
     
     'geospatial': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'd3qst7v88t8ip3',
-        'USER': 'zvmidtgaeqvbpm',
-        'PASSWORD': '56e0609a3b65fbc76bc70752548b8ac4bd9ea155e80e4c6947627f0ace293902',
-        'HOST': 'ec2-50-19-176-236.compute-1.amazonaws.com',
+        'NAME': 'dcfl2ktgkf3bsv',
+        'USER': 'mevdpmwgzyblpg',
+        'PASSWORD': 'c553ba2c969a9aa3b3a2b0990503535f067100b87c157552f111cc7064f002f6',
+        'HOST': 'ec2-34-203-255-149.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
+
 DATABASE_ROUTERS = ['facility.routers.dbRouter']
 
 
@@ -153,7 +154,5 @@ STATIC_URL = '/static/'
 
 import dj_database_url
 
-#test1 = dj_database_url.config(['DATABASE_URL'])
-#DATABASES['default'].update(test1)
 
 django_heroku.settings(locals())
