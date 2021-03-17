@@ -154,7 +154,7 @@ STATIC_URL = '/static/'
 
 import dj_database_url
 
-
-DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
+test1 = dj_database_url.config(default=os.environ['DATABASE_URL'])
+DATABASES['default'].update(test1)
 #DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 django_heroku.settings(locals())
