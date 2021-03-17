@@ -98,8 +98,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    },   
-     
+    },
+    
+     'geospatial': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'geospatial',
+        'USER': 'postgres',
+        'PASSWORD': 'felroy',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 DATABASE_ROUTERS = ['facility.routers.dbRouter']
@@ -145,7 +153,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import dj_database_url
-DATABASES['geospatial'] = dj_database_url.config('postgres://mevdpmwgzyblpg:c553ba2c969a9aa3b3a2b0990503535f067100b87c157552f111cc7064f002f6@ec2-34-203-255-149.compute-1.amazonaws.com:5432/dcfl2ktgkf3bsv')
+DATABASES['geospatial'] = dj_database_url.config('HEROKU_POSTGRESQL_GRAY_URL')
 DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 django_heroku.settings(locals())
