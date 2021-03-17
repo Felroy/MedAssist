@@ -153,6 +153,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import dj_database_url
-
+DATABASES['geospatial'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 django_heroku.settings(locals())
