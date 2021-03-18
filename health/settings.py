@@ -159,9 +159,9 @@ DATABASES['geospatial'].update(geodbtest)
 sqldb = dj_database_url.config(default='postgres://vkmtijelwktgvk:504d2fd44cf11dbbb516ce2a40c681972ae600400242009a37dd70cbe2057c50@ec2-18-233-83-165.compute-1.amazonaws.com:5432/dcgr6vdl6r0spk')
 DATABASES['default'].update(sqldb)
 
-#import dj_database_url
-#DATABASES['geospatial'] = dj_database_url.config()
-#DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-django_heroku.settings(locals())
+
 DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-DATABASES['default']['ENGINE'] = "django.db.backends.sqlite3" 
+DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+django_heroku.settings(locals())
+
+
