@@ -96,16 +96,16 @@ WSGI_APPLICATION = 'health.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
     
      'geospatial': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'geospatial',
-        'USER': 'postgres',
-        'PASSWORD': 'felroy',
-        'HOST': 'localhost',
+        'NAME': 'd48v18f147qbjv',
+        'USER': 'upprrugzaqvnul',
+        'PASSWORD': '7863e8859014c006b4e8afabe04adcb75dd3bca2c39716814fd0d54e5f4cf494',
+        'HOST': 'ec2-54-161-239-198.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -156,5 +156,7 @@ import dj_database_url
 #geodbtest = dj_database_url.config(default='postgres://mevdpmwgzyblpg:c553ba2c969a9aa3b3a2b0990503535f067100b87c157552f111cc7064f002f6@ec2-34-203-255-149.compute-1.amazonaws.com:5432/dcfl2ktgkf3bsv')
 #DATABASES['geospatial'].update(geodbtest)
 #DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-
+import dj_database_url
+DATABASES['geospatial'] = dj_database_url.config()
+DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 django_heroku.settings(locals())
