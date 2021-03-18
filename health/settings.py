@@ -154,11 +154,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import dj_database_url
-geodbtest = dj_database_url.config(default='postgres://vkmtijelwktgvk:504d2fd44cf11dbbb516ce2a40c681972ae600400242009a37dd70cbe2057c50@ec2-18-233-83-165.compute-1.amazonaws.com:5432/dcgr6vdl6r0spk')
+geodbtest = dj_database_url.config(default='postgres://tsqubadymmyban:8aec10568813a38366cfa96e01a76b2a84351ef865655f57cc69da5453273049@ec2-18-214-208-89.compute-1.amazonaws.com:5432/dct09uh5gp0vma')
 DATABASES['geospatial'].update(geodbtest)
+sqldb = dj_database_url.config(default='postgres://vkmtijelwktgvk:504d2fd44cf11dbbb516ce2a40c681972ae600400242009a37dd70cbe2057c50@ec2-18-233-83-165.compute-1.amazonaws.com:5432/dcgr6vdl6r0spk')
+DATABASES['default'].update(sqldb)
 
 #import dj_database_url
 #DATABASES['geospatial'] = dj_database_url.config()
 #DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 django_heroku.settings(locals())
 DATABASES['geospatial']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+DATABASES['default']['ENGINE'] = "django.db.backends.sqlite3" 
