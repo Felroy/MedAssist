@@ -103,8 +103,8 @@ DATABASES = {
      'geospatial': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'd48v18f147qbjv',
-        'USER': 'upprrugzaqvnul',
-        'PASSWORD': '7863e8859014c006b4e8afabe04adcb75dd3bca2c39716814fd0d54e5f4cf494',
+        'USER': 'postgres',
+        'PASSWORD': 'felroy',
         'HOST': 'ec2-54-161-239-198.compute-1.amazonaws.com',
         'PORT': '5432',
     }
