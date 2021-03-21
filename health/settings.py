@@ -24,8 +24,8 @@ if os.name == 'nt':
     os.environ['PROJ_LIB'] = r'C:\Python\Lib\site-packages\osgeo\data\proj'
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 POSTGIS_VERSION = (3, 1, 1)
-#GDAL_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\gdal302.dll'
-#GEOS_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\geos_c.dll'
+GDAL_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\gdal302.dll'
+GEOS_LIBRARY_PATH = r'C:\Python\Lib\site-packages\osgeo\geos_c.dll'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,6 +87,22 @@ TEMPLATES = [
         },
     },
 ]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },   
+     
+    'geospatial': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'geospatial',
+        'USER': 'postgres',
+        'PASSWORD': 'felroy',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+    
+}
 
 WSGI_APPLICATION = 'health.wsgi.application'
 
@@ -138,27 +154,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-import dj_database_url
-django_heroku.settings(locals())
 
 #sqldb = dj_database_url.config(default='postgres://vkmtijelwktgvk:504d2fd44cf11dbbb516ce2a40c681972ae600400242009a37dd70cbe2057c50@ec2-18-233-83-165.compute-1.amazonaws.com:5432/dcgr6vdl6r0spk')
 #DATABASES['default'].update(sqldb)
 #DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },   
-     
-    'geospatial': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'dh3vagqm76ol7',
-        'USER': 'eqcsrwmzhhrmnp',
-        'PASSWORD': 'e8dc507f317cd80a7fe894f3d0557c3c50f152ecc4284fb1d52c91c67e182017',
-        'HOST': 'ec2-52-6-178-202.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-    
-}
 
 
