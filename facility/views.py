@@ -27,17 +27,17 @@ def facilitylocator(request):
     icon=folium.Icon(color='red')    
   ).add_to(map)
   test = Clinic.objects.all()
-  for item in test:
-      folium.Marker(
-      location=item.location,
-      popup=item.name,
-      icon=folium.Icon()
-    ).add_to(map)      
+  
     
  
   #filtering and sorting clinic based on user's location
   sort = Clinic.objects.filter(location__distance_lt=(point1, Distance(km=5)))
-  
+  for item in sort:
+      folium.Marker(
+      location=item.location,
+      popup=folium.Popup(item.name, max_width=200),
+      icon=folium.Icon()
+    ).add_to(map)      
   map=map._repr_html_()
   context = {
     'map': map,

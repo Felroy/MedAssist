@@ -8,7 +8,7 @@ What symptoms are you currently displaying?
     {{ form.as_p }}    
 </form>
 </div><br>
-<div id="emform">Below is the list of emergency warning signs you should look out for. If you are showing any of the following symptoms, please seek emergency medical care.
+<div class="emform">Below is the list of emergency warning signs you should look out for. If you are showing any of the following symptoms, please seek emergency medical care.
 <form method="POST">   
     {% csrf_token %}
     {{ emform.as_p }}

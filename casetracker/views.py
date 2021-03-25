@@ -36,7 +36,7 @@ def localcasetracker(request):
         fill_color='YlGn',
         fill_opacity=0.4,
         line_opacity=0.5,
-        legend_name='Vaccines registered as of 21-02-2021',
+        legend_name='Vaccines registered between 08-12-2020 and 21-02-2021',
         show=True ,      
     ).add_to(map)
        
@@ -49,7 +49,7 @@ def localcasetracker(request):
         fill_color='YlOrRd',
         fill_opacity=0.4,
         line_opacity=0.5,
-        legend_name='Percentage of population vaccinated as of 21-02-2021',
+        legend_name='Percentage of population vaccinated between 08-12-2020 and 21-02-2021',
         show= False,       
     ).add_to(map)
     style_function = lambda x: {'fillColor': '#ffffff', 
